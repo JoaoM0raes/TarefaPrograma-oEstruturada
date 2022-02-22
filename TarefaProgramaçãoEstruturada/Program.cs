@@ -88,12 +88,16 @@ namespace TarefaProgramaçãoEstruturada
             Console.Write("Os números em sequencia são: ");
             for (int i = 0; i < números.Length; i++)
             {                   
-                a += Convert.ToString(números[i]+",");
+                a += Convert.ToString(números[i]);
             }
             
             for (int i = 0; i < a.Length; i++)
             {
                 Console.Write(a[i]);
+                if (i < 9)
+                {
+                    Console.Write(',');
+                }
             }
                 Console.WriteLine();
         }
@@ -103,11 +107,16 @@ namespace TarefaProgramaçãoEstruturada
             Console.Write("Removendo o primeiro Número: ");
             for (int i = 1; i < números.Length; i++)
             {
-                a += Convert.ToString(números[i] + ",");
+                a += Convert.ToString(números[i] );
+                
             }
             for (int i = 0; i < a.Length; i++)
             {
                 Console.Write(a[i]);
+                if (i < 9)
+                {
+                    Console.Write(',');
+                }
             }
             Console.WriteLine();
         }
