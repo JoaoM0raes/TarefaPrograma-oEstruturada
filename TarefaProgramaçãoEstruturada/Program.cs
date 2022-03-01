@@ -9,6 +9,7 @@ namespace TarefaProgramaçãoEstruturada
             int[] números = new int[10];
             int resultadoMaior = 0;
             int resultadoMenor;
+            
             números=pegarNúmeros();
             números=TransformarArray(números);
             acharMaior( ref resultadoMaior,números );
@@ -18,7 +19,9 @@ namespace TarefaProgramaçãoEstruturada
             TresMaiores(números);
             numerosNegativos(números);
             númerosSequencia(números);
-            RemovendoUmNúmero(números);
+            Console.WriteLine("Escreva o número para remover");
+            int NúmeroParaRemover = Convert.ToInt32(Console.ReadLine());
+            RemovendoUmNúmero(números, NúmeroParaRemover);
 
         }
         static int[] pegarNúmeros()
@@ -31,6 +34,7 @@ namespace TarefaProgramaçãoEstruturada
                 a = Convert.ToInt32(Console.ReadLine());
                 arr[i] = a;
             }
+            
             return arr;
         }
         static int[] TransformarArray(int[]array)
@@ -101,22 +105,32 @@ namespace TarefaProgramaçãoEstruturada
             }
                 Console.WriteLine();
         }
-        static void RemovendoUmNúmero(int[] números)
+        static void RemovendoUmNúmero(int[] números,int numeroParaRemover)
         {
             string a = "";
-            Console.Write("Removendo o primeiro Número: ");
-            for (int i = 1; i < números.Length; i++)
+            int qtdRemover = 0;
+            Console.Write("Removendo o Número escolhido: ");
+            for (int i = 0; i < números.Length; i++)
             {
-                a += Convert.ToString(números[i] );
-                
-            }
-            for (int i = 0; i < a.Length; i++)
-            {
-                Console.Write(a[i]);
-                if (i < 9)
+                if (números[i] == numeroParaRemover)
                 {
-                    Console.Write(',');
+                    qtdRemover++;
                 }
+            }
+            int[] novaArray = new int[números.Length - qtdRemover];
+            int j = 0;
+            for (int i = 0; i < números.Length; i++)
+            {
+                if (números[i] != numeroParaRemover)
+                {
+                    novaArray[j] = números[i];
+                    j++;
+                }
+            }
+            números = novaArray;
+            for (int i = 0; i < números.Length; i++)
+            {
+                Console.Write(números[i]);
             }
             Console.WriteLine();
         }
